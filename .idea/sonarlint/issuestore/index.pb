@@ -15,3 +15,5 @@ _
 -src/main/java/com/revature/models/Person.java,b\d\bd12c35998f0fc26aea0b4abbd5b0bf383ded898
 f
 6src/main/java/com/revature/services/PersonService.java,9\f\9f7bc053cd70c614541134d197fbff8c1bf37a77
+@
+log4j.properties,7\3\7330e4252652b61093498eabc26c3cadee5d89b7
