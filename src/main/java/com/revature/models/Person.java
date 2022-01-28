@@ -2,49 +2,62 @@ package com.revature.models;
 
 public class Person
 {
-    private int id;
-    private Type type;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    protected int id;
+    protected Type type;
+    protected String userName;
+    protected String email;
+    protected String password;
 
-    public Person()
-    {}
+    public Person() {
+    }
 
-    public Person(int id, Type type, String firstName, String lastName, String email, String password)
-    {
+    public Person(int id, Type type, String userName, String email, String password) {
         this.id = id;
         this.type = type;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.userName = userName;
         this.email = email;
         this.password = password;
     }
 
-    public int getId() {return id;}
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) {this.id = id;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public Type getType() {return type;}
+    public Type getType() {
+        return type;
+    }
 
-    public void setType(Type type) {this.type = type;}
+    public void setType(Type type) {
+        this.type = type;
+    }
 
-    public String getFirstName() {return firstName;}
+    public String getUserName() {
+        return userName;
+    }
 
-    public void setFirstName(String firstName) {this.firstName = firstName;}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-    public String getLastName() {return lastName;}
+    public String getEmail() {
+        return email;
+    }
 
-    public void setLastName(String lastName) {this.lastName = lastName;}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public String getEmail() {return email;}
+    public String getPassword() {
+        return password;
+    }
 
-    public void setEmail(String email) {this.email = email;}
-
-    public String getPassword() {return password;}
-
-    public void setPassword(String password) {this.password = password;}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public String toString()
@@ -52,8 +65,7 @@ public class Person
         return "Person{" +
                 "id: " + id +
                 ", type: " + type +
-                ", first: " + firstName +
-                '\'' + ", last: " + lastName +
+                "userName" + userName +
                 '\'' + ", email: " + email +
                 '\'' + ", password: " + password +
                 '\'' + '}';

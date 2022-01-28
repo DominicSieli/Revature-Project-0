@@ -2,7 +2,7 @@ package com.revature.models;
 
 public enum Type
 {
-    BANKER,
+    MANAGER,
     CASHIER,
     CUSTOMER
 }
