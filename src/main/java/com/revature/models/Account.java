@@ -1,46 +1,60 @@
 package com.revature.models;
 
 public class Account {
-    private int id;
     private int balance;
+    private int accountNumber;
     private String userName;
     private String password;
 
-    public Account(int id, String userName, String password){
-        this.id = id;
+    public Account() {
+    }
+
+    public Account(int balance, int accountNumber, String userName, String password) {
+        this.balance = balance;
+        this.accountNumber = accountNumber;
         this.userName = userName;
         this.password = password;
     }
 
-    public void register(){
-
-    }
-
-    public void openJointAccount(){
-
-    }
-
-    public void openSingleAccount(){
-
-    }
-
-    public void closeAccount(){
-
-    }
-
-    public void deposit(int amount){
-        if(amount > 0){
-            balance += amount;
-        }
-    }
-
-    public void withdraw(int amount){
-        if(amount > 0 && balance >= amount){
-            balance -= amount;
-        }
-    }
-
-    public int currentBalance() {
+    public int getBalance() {
         return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "balance=" + balance +
+                ", accountNumber=" + accountNumber +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

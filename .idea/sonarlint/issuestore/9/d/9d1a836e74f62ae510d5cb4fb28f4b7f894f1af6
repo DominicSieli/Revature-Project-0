@@ -1,3 +1,11 @@
 
-]
-java:S2094"BRemove this empty class, write its code or make it an "interface".(›å¿éùÿÿÿÿ
+d
+java:S11927"IDefine a constant instead of duplicating this literal "lastName" 3 times.(ö€¬Àþÿÿÿÿ
+e
+java:S11926"JDefine a constant instead of duplicating this literal "firstName" 3 times.(”°»Šûÿÿÿÿ
+^
+java:S11929"IDefine a constant instead of duplicating this literal "password" 4 times.(ÒÛºk
+a
+java:S11928"FDefine a constant instead of duplicating this literal "email" 4 times.(Ð“Éçûÿÿÿÿ
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ðúÿÿÿÿ
