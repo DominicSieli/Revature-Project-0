@@ -1,20 +1,29 @@
 package com.revature.models;
 
-public class Person
-{
-    protected int id;
-    protected Type type;
-    protected String userName;
-    protected String email;
-    protected String password;
+public class Person {
+    private int id;
+    private Type type;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
 
     public Person() {
     }
 
-    public Person(int id, Type type, String userName, String email, String password) {
+    public Person(int id, Type type, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.type = type;
-        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Person(Type type, String firstName, String lastName, String email, String password) {
+        this.type = type;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
@@ -35,12 +44,20 @@ public class Person
         this.type = type;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -60,14 +77,14 @@ public class Person
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Person{" +
-                "id: " + id +
-                ", type: " + type +
-                "userName" + userName +
-                '\'' + ", email: " + email +
-                '\'' + ", password: " + password +
-                '\'' + '}';
+                "id=" + id +
+                ", type=" + type +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

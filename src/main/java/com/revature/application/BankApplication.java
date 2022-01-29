@@ -1,10 +1,9 @@
 package com.revature.application;
 
-import com.revature.services.Menu;
+import io.javalin.Javalin;
 
 public class BankApplication {
     public static void main(String args[]){
-        Menu menu = new Menu();
-        menu.mainMenu();
+        System.out.println("Test");
     }
 }

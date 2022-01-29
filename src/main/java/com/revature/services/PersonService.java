@@ -1,12 +1,14 @@
 package com.revature.services;
 
+import java.util.List;
+import java.util.Locale;
 import com.revature.models.Type;
 import com.revature.models.Person;
 
 public class PersonService
 {
-    public Person createPerson(int id, Type type, String userName, String email, String password)
+    public Person createPerson()
     {
-        return new Person(id, type, userName, email, password);
+        return new Person();
     }
 }

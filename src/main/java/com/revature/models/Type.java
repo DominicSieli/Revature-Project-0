@@ -1,7 +1,6 @@
 package com.revature.models;
 
-public enum Type
-{
+public enum Type {
     MANAGER,
     CASHIER,
     CUSTOMER
