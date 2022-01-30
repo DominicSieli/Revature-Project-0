@@ -1,6 +1,4 @@
 
-[
-+src/main/java/com/revature/Placeholder.java,8\7\872e79eb50fdab08c6187c915957e9bd19788672
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 @
@@ -11,21 +9,3 @@
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 k
 ;src/main/java/com/revature/application/BankApplication.java,3\5\352419b5bc0587d912ba33aeed8a91f7869159fa
-k
-;src/main/java/com/revature/utilities/ConnectionUtility.java,1\4\140b2ecbace3435eb3dfcc267ea4519f7b334e7a
-d
-4src/main/java/com/revature/utilities/LogUtility.java,5\6\56e24d214452dab4effb1a1fe87a4d0347d987e8
-g
-7src/main/java/com/revature/services/AccountService.java,4\e\4e59ba77ae1fdc71d47dc4b38f3dd81a0f4ba889
-[
-+src/main/java/com/revature/models/Type.java,3\0\30f9bf41fbd6b4af58b1b26ac9b3b78c922a9ef5
-]
--src/main/java/com/revature/models/Person.java,b\d\bd12c35998f0fc26aea0b4abbd5b0bf383ded898
-^
-.src/main/java/com/revature/models/Account.java,8\4\846487f832ab1cca4567c8fbda8c44f75fc3d56d
-f
-6src/main/java/com/revature/services/PersonService.java,9\f\9f7bc053cd70c614541134d197fbff8c1bf37a77
-^
-.src/main/java/com/revature/daos/PersonDao.java,4\6\467f5542a5a9cd8c9d483aab74a4739c72e52686
-l
-<src/main/java/com/revature/daos/PersonDaoImplementation.java,9\d\9d1a836e74f62ae510d5cb4fb28f4b7f894f1af6
