@@ -10,13 +10,6 @@ public class Account {
     public Account() {
     }
 
-    public Account(int balance, int accountNumber, String userName, String password) {
-        this.balance = balance;
-        this.accountNumber = accountNumber;
-        this.userName = userName;
-        this.password = password;
-    }
-
     public int getBalance() {
         return balance;
     }
@@ -57,11 +50,30 @@ public class Account {
         this.password = password;
     }
 
+    public boolean deposit(int amount) {
+        if(amount > 0) {
+            this.balance += amount;
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean withdraw(int amount) {
+        if(amount > 0 && balance >= amount) {
+            balance -= amount;
+            return true;
+        }
+
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
                 "balance=" + balance +
                 ", accountNumber=" + accountNumber +
+                ", customer=" + customer +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
