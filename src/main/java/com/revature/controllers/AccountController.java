@@ -9,7 +9,7 @@ public class AccountController {
     private AccountService accountService = new AccountService();
 
     public void handleGetOne(Context context) {
-        String accountNumberParameter = context.pathParam("number");
+        String accountNumberParameter = context.pathParam("account_number");
         int accountNumber = Integer.parseInt(accountNumberParameter);
         Account account = accountService.getAccountByAccountNumber(accountNumber);
 

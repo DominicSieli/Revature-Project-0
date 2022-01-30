@@ -11,8 +11,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, Type type, String firstName, String lastName, String email, String password) {
-        this.id = id;
+    public Person(Type type, String firstName, String lastName, String email, String password) {
         this.type = type;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -20,7 +19,8 @@ public class Person {
         this.password = password;
     }
 
-    public Person(Type type, String firstName, String lastName, String email, String password) {
+    public Person(int id, Type type, String firstName, String lastName, String email, String password) {
+        this.id = id;
         this.type = type;
         this.firstName = firstName;
         this.lastName = lastName;

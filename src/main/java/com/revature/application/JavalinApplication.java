@@ -34,7 +34,7 @@ public class JavalinApplication {
 
             path("accounts", ()->{
                 before(authorizationController::authorizedCustomerToken);
-                get("{id}", accountController::handleGetOne);
+                get("{account_number}", accountController::handleGetOne);
             });
 
             path("login",()->{
