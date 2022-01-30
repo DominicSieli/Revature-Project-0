@@ -3,6 +3,7 @@ package com.revature.models;
 public class Account {
     private int balance;
     private int accountNumber;
+    private Person customer;
     private String userName;
     private String password;
 
@@ -30,6 +31,14 @@ public class Account {
 
     public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    public Person getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Person customer) {
+        this.customer = customer;
     }
 
     public String getUserName() {
