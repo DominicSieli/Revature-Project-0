@@ -11,7 +11,7 @@ public class AccountController {
     public void handleGetOne(Context context) {
         String accountNumberParameter = context.pathParam("account_number");
         int accountNumber = Integer.parseInt(accountNumberParameter);
-        Account account = accountService.getAccountByAccountNumber(accountNumber);
+        Account account = accountService.getAccountByNumber(accountNumber);
 
         if(account != null) {
             context.json(account);

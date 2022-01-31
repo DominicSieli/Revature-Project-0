@@ -4,8 +4,6 @@ public class Account {
     private int balance;
     private int accountNumber;
     private Person customer;
-    private String userName;
-    private String password;
 
     public Account() {
     }
@@ -14,8 +12,6 @@ public class Account {
         this.balance = balance;
         this.accountNumber = accountNumber;
         this.customer = customer;
-        this.userName = userName;
-        this.password = password;
     }
 
     public int getBalance() {
@@ -42,30 +38,12 @@ public class Account {
         this.customer = customer;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Override
     public String toString() {
         return "Account{" +
                 "balance=" + balance +
                 ", accountNumber=" + accountNumber +
                 ", customer=" + customer +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }

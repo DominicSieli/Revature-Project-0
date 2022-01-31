@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
 
 public class AccountDaoImplementation implements AccountDao {
     @Override
-    public Account getAccountByAccountNumber(int number) {
+    public Account getAccountByNumber(int number) {
         try(Connection connection = ConnectionUtility.getConnection();) {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from {oj account left join person on person.id = account.customer where account.number = ?}");
             preparedStatement.setInt(1, number);

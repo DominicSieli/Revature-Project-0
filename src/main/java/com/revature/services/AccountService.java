@@ -11,8 +11,18 @@ import org.checkerframework.checker.units.qual.A;
 public class AccountService {
     private AccountDao accountDao = new AccountDaoImplementation();
 
-        public boolean deposit(int accountNumber, int amount) {
-            Account account = accountDao.getAccountByAccountNumber(accountNumber);
+        public boolean register(String firstName, String lastName, String email, String password) {
+
+            return false;
+        }
+
+        public boolean apply(Person person) {
+
+            return false;
+        }
+
+        public boolean deposit(Person person, int accountNumber, int amount) {
+            Account account = accountDao.getAccountByNumber(accountNumber);
 
             if(amount > 0) {
                 account.setBalance(account.getBalance() + amount);
@@ -22,8 +32,8 @@ public class AccountService {
             return false;
         }
 
-        public boolean withdraw(int accountNumber, int amount) {
-            Account account = accountDao.getAccountByAccountNumber(accountNumber);
+        public boolean withdraw(Person person, int accountNumber, int amount) {
+            Account account = accountDao.getAccountByNumber(accountNumber);
 
             if(amount > 0 && account.getBalance() >= amount) {
                 account.setBalance(account.getBalance() - amount);
@@ -33,7 +43,20 @@ public class AccountService {
             return false;
         }
 
-        public Account getAccountByAccountNumber(int accountNumber) {
-            return accountDao.getAccountByAccountNumber(accountNumber);
+    public boolean transfer(Person person, int fromAccountNumber, int toAccountNumber, int amount) {
+        Account fromAccount = accountDao.getAccountByNumber(fromAccountNumber);
+        Account toAccount = accountDao.getAccountByNumber(toAccountNumber);
+
+        if(amount > 0 && fromAccount.getBalance() >= amount) {
+            fromAccount.setBalance(fromAccount.getBalance() - amount);
+            toAccount.setBalance(toAccount.getBalance() + amount);
+            return true;
+        }
+
+        return false;
+    }
+
+        public Account getAccountByNumber(int accountNumber) {
+            return accountDao.getAccountByNumber(accountNumber);
         }
 }
