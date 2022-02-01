@@ -13,13 +13,13 @@ import com.revature.controllers.AuthorizationController;
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class JavalinApplication {
-    private LogUtility logUtility = new LogUtility();
-    private PersonController personController = new PersonController();
-    private AccountController accountController = new AccountController();
-    private AppExceptionHandler appExceptionHandler = new AppExceptionHandler();
-    private AuthorizationController authorizationController = new AuthorizationController();
+        final private LogUtility logUtility = new LogUtility();
+        final private PersonController personController = new PersonController();
+        final private AccountController accountController = new AccountController();
+        final private AppExceptionHandler appExceptionHandler = new AppExceptionHandler();
+        final private AuthorizationController authorizationController = new AuthorizationController();
 
-    private Javalin application = Javalin.create().routes(()->{
+        final private Javalin application = Javalin.create().routes(()->{
         path("people",()-> {
                     get(personController::handleGetAll);
                     post(personController::handleCreate);

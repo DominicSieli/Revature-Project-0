@@ -1,18 +1,18 @@
 package com.revature.services;
 
 import java.util.List;
-import java.util.Locale;
+
 import com.revature.models.Type;
 import com.revature.models.Person;
 import com.revature.daos.PersonDao;
+import com.revature.utilities.Encryption;
 import com.revature.daos.PersonDaoImplementation;
 
 public class PersonService {
-        private PersonDao personDao = new PersonDaoImplementation();
+        private final PersonDao personDao = new PersonDaoImplementation();
 
         public boolean create(Type type, String firstName, String lastName, String password) {
-                String email = firstName + "." + lastName + "@gmail.com";
-                email = email.toLowerCase();
+                String email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@gmail.com";
                 Person person = new Person(type, firstName, lastName, email, password);
 
                 return personDao.create(person);
@@ -30,14 +30,14 @@ public class PersonService {
                 return personDao.getAll();
         }
 
-        public boolean changePassword(String oldPassword, String newPassword, int id) {
+        public boolean changePassword(int id, String oldPassword, String newPassword) {
                 Person person = personDao.getByID(id);
+                String hashedOldPassword = Encryption.hashString(person.getPassword());
 
-                if(person.getPassword().equals(oldPassword)) {
+                if(hashedOldPassword.equals(Encryption.hashString(oldPassword))) {
                         person.setPassword(newPassword);
-                        boolean updateSuccess = personDao.update(person);
 
-                        return updateSuccess;
+                        return personDao.update(person);
                 }
 
                 return false;
@@ -52,6 +52,6 @@ public class PersonService {
         }
 
         public Person getByEmailAndPassword(String email, String password) {
-                return personDao.getByEmailAndPassword(email, password);
+                return personDao.getByEmailAndPassword(email, Encryption.hashString(password));
         }
 }

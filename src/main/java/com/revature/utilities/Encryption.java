@@ -5,7 +5,7 @@ public class Encryption {
         int hash = 0;
 
         for(char chr : rawString.toCharArray()) {
-            hash += (int)chr;
+            hash += chr;
         }
 
         return String.valueOf(hash % 10000);

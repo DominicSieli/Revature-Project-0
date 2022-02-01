@@ -1,17 +1,14 @@
 package com.revature.daos;
 
-import java.util.List;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
 
 import com.revature.models.Type;
 import com.revature.models.Person;
 import com.revature.models.Account;
 import com.revature.utilities.ConnectionUtility;
-import org.checkerframework.checker.units.qual.A;
-
-import java.sql.ResultSet;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
 
 public class AccountDaoImplementation implements AccountDao {
     @Override
@@ -30,8 +27,8 @@ public class AccountDaoImplementation implements AccountDao {
                     Person customer = new Person();
                     customer.setId(resultSet.getInt("customer"));
                     customer.setType(Type.values()[resultSet.getInt("type")]);
-                    customer.setFirstName(resultSet.getString("firstName"));
-                    customer.setLastName(resultSet.getString("lastName"));
+                    customer.setFirstName(resultSet.getString("first_name"));
+                    customer.setLastName(resultSet.getString("last_name"));
                     customer.setEmail(resultSet.getString("email"));
                     customer.setPassword(resultSet.getString("password"));
                     account.setCustomer(customer);

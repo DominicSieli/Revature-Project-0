@@ -6,7 +6,7 @@ import com.revature.models.Account;
 import com.revature.services.AccountService;
 
 public class AccountController {
-    private AccountService accountService = new AccountService();
+    private final AccountService accountService = new AccountService();
 
     public void handleGetOne(Context context) {
         String accountNumberParameter = context.pathParam("account_number");
