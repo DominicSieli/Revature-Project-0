@@ -1,9 +1,8 @@
 package com.revature.application;
 
-import com.revature.controllers.AccountController;
 import io.javalin.Javalin;
-
 import com.revature.utilities.LogUtility;
+import com.revature.controllers.AccountController;
 
 import org.checkerframework.checker.units.qual.A;
 

@@ -38,8 +38,6 @@ public class AccountDaoImplementation implements AccountDao {
                 }
 
                 account.setBalance(resultSet.getInt("balance"));
-                account.setUserName(resultSet.getString("userName"));
-                account.setPassword(resultSet.getString("password"));
                 account.setAccountNumber(resultSet.getInt("accountNumber"));
             }
         } catch (SQLException e) {

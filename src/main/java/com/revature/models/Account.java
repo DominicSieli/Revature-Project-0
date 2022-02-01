@@ -1,16 +1,24 @@
 package com.revature.models;
 
 public class Account {
+    private Person customer;
     private int balance;
     private int accountNumber;
-    private Person customer;
 
     public Account() {
     }
 
-    public Account(int balance, int accountNumber, Person customer, String userName, String password) {
+    public Account(Person customer, int balance, int accountNumber) {
+        this.customer = customer;
         this.balance = balance;
         this.accountNumber = accountNumber;
+    }
+
+    public Person getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Person customer) {
         this.customer = customer;
     }
 
@@ -30,20 +38,12 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public Person getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Person customer) {
-        this.customer = customer;
-    }
-
     @Override
     public String toString() {
         return "Account{" +
-                "balance=" + balance +
+                "customer=" + customer +
+                ", balance=" + balance +
                 ", accountNumber=" + accountNumber +
-                ", customer=" + customer +
                 '}';
     }
 }

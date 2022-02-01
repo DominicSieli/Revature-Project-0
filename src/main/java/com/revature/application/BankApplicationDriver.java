@@ -15,7 +15,7 @@ import com.revature.controllers.AppExceptionHandler;
 
 public class BankApplicationDriver {
     public static void main(String[] args){
-        JavalinApplication javalinApplication = new JavalinApplication();
-        javalinApplication.start(8080);
+        JavalinApplication application = new JavalinApplication();
+        application.start(8080);
     }
 }

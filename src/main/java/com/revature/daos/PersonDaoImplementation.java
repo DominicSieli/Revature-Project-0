@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.ArrayList;
 import com.revature.models.Type;
 import com.revature.models.Person;
+import com.revature.utilities.Encryption;
 import com.revature.utilities.ConnectionUtility;
 
 public class PersonDaoImplementation implements PersonDao {
     @Override
     public boolean create(Person person) {
-        String sql = "insert into person (type, firstName, lastName, email, password) values (?,?,?,?,?)";
+        String sql = "insert into person (type, first_name, last_name, email, password) values (?,?,?,?,?)";
 
         try(Connection connection = ConnectionUtility.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -20,7 +21,7 @@ public class PersonDaoImplementation implements PersonDao {
             preparedStatement.setString(2, person.getFirstName());
             preparedStatement.setString(3, person.getLastName());
             preparedStatement.setString(4, person.getEmail());
-            preparedStatement.setString(5, person.getPassword());
+            preparedStatement.setString(5, Encryption.hashString(person.getPassword()));
 
             int affectedRows = preparedStatement.executeUpdate();
 
@@ -49,10 +50,10 @@ public class PersonDaoImplementation implements PersonDao {
 
                 Type[] types = Type.values();
                 int typeOrdinal = resultSet.getInt("type");
-                person.setType(types[typeOrdinal]);
 
-                person.setFirstName(resultSet.getString("firstName"));
-                person.setLastName(resultSet.getString("lastName"));
+                person.setType(types[typeOrdinal]);
+                person.setFirstName(resultSet.getString("first_name"));
+                person.setLastName(resultSet.getString("last_name"));
                 person.setEmail(resultSet.getString("email"));
                 person.setPassword(resultSet.getString("password"));
 
@@ -81,8 +82,8 @@ public class PersonDaoImplementation implements PersonDao {
                 int typeOrdinal = resultSet.getInt("type");
                 person.setType(types[typeOrdinal]);
 
-                person.setFirstName(resultSet.getString("firstName"));
-                person.setLastName(resultSet.getString("lastName"));
+                person.setFirstName(resultSet.getString("first_name"));
+                person.setLastName(resultSet.getString("last_name"));
                 person.setEmail(resultSet.getString("email"));
                 person.setPassword(resultSet.getString("password"));
 
@@ -97,7 +98,7 @@ public class PersonDaoImplementation implements PersonDao {
 
     @Override
     public boolean update(Person person) {
-        String sql = "update person set type = ?, firstName = ?, lastName = ?, email = ?, password = ? where id = ?";
+        String sql = "update person set type = ?, first_name = ?, last_name = ?, email = ?, password = ? where id = ?";
 
         try(Connection connection = ConnectionUtility.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
@@ -105,7 +106,7 @@ public class PersonDaoImplementation implements PersonDao {
             preparedStatement.setString(2, person.getFirstName());
             preparedStatement.setString(3, person.getLastName());
             preparedStatement.setString(4, person.getEmail());
-            preparedStatement.setString(5, person.getPassword());
+            preparedStatement.setString(5, Encryption.hashString(person.getPassword()));
             preparedStatement.setInt(6, person.getId());
 
             int affectedRows = preparedStatement.executeUpdate();
@@ -137,8 +138,8 @@ public class PersonDaoImplementation implements PersonDao {
                 int typeOrdinal = resultSet.getInt("type");
                 person.setType(types[typeOrdinal]);
 
-                person.setFirstName(resultSet.getString("firstName"));
-                person.setLastName(resultSet.getString("lastName"));
+                person.setFirstName(resultSet.getString("first_name"));
+                person.setLastName(resultSet.getString("last_name"));
                 person.setEmail(resultSet.getString("email"));
                 person.setPassword(resultSet.getString("password"));
 

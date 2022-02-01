@@ -1,11 +1,11 @@
 
-d
-java:S11927"IDefine a constant instead of duplicating this literal "lastName" 3 times.(ö€¬Àþÿÿÿÿ
-e
-java:S11926"JDefine a constant instead of duplicating this literal "firstName" 3 times.(”°»Šûÿÿÿÿ
 ^
-java:S11929"IDefine a constant instead of duplicating this literal "password" 4 times.(ÒÛºk
+java:S1192:"IDefine a constant instead of duplicating this literal "password" 4 times.(ÒÛºk
+e
+java:S11928"JDefine a constant instead of duplicating this literal "last_name" 3 times.(‹Ô‡‰ûÿÿÿÿ
+f
+java:S11927"KDefine a constant instead of duplicating this literal "first_name" 3 times.(þªÿòüÿÿÿÿ
 a
-java:S11928"FDefine a constant instead of duplicating this literal "email" 4 times.(Ð“Éçûÿÿÿÿ
+java:S11929"FDefine a constant instead of duplicating this literal "email" 4 times.(Ð“Éçûÿÿÿÿ
 j
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ðúÿÿÿÿ
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ðúÿÿÿÿ
