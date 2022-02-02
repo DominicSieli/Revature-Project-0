@@ -1,25 +1,25 @@
 package com.revature.models;
 
 public class Account {
-    private Person customer;
+    private int customerId;
     private int balance;
     private int accountNumber;
 
     public Account() {
     }
 
-    public Account(Person customer, int balance, int accountNumber) {
-        this.customer = customer;
+    public Account(int customerId, int balance, int accountNumber) {
+        this.customerId = customerId;
         this.balance = balance;
         this.accountNumber = accountNumber;
     }
 
-    public Person getCustomer() {
-        return customer;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Person customer) {
-        this.customer = customer;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public int getBalance() {
@@ -41,7 +41,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "customer=" + customer +
+                "customerId=" + customerId +
                 ", balance=" + balance +
                 ", accountNumber=" + accountNumber +
                 '}';

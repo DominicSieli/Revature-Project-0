@@ -11,24 +11,21 @@ import com.revature.utilities.ConnectionUtility;
 public class PersonDaoImplementation implements PersonDao {
     @Override
     public boolean create(Person person) {
-        String sql = "insert into person (type, first_name, last_name, email, password) values (?,?,?,?,?)";
+        String sql = "insert into person (type, first_name, last_name, email, password) values (?, ?, ?, ?, ?)";
 
-        try(Connection connection = ConnectionUtility.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        try (Connection connection = ConnectionUtility.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);){
 
             preparedStatement.setInt(1, person.getType().ordinal());
-
             preparedStatement.setString(2, person.getFirstName());
             preparedStatement.setString(3, person.getLastName());
             preparedStatement.setString(4, person.getEmail());
             preparedStatement.setString(5, Encryption.hashString(person.getPassword()));
 
-            int affectedRows = preparedStatement.executeUpdate();
-
-            if(affectedRows == 1) {
+            if(preparedStatement.executeUpdate() == 1){
                 return true;
             }
-        } catch (SQLException e) {
+        } catch (SQLException e){
             e.printStackTrace();
         }
 
@@ -36,7 +33,7 @@ public class PersonDaoImplementation implements PersonDao {
     }
 
     @Override
-    public List<Person> getAll() {
+    public List<Person> readAll() {
         String sql = "select * from person";
         List<Person> people = new ArrayList<>();
 
@@ -45,13 +42,11 @@ public class PersonDaoImplementation implements PersonDao {
 
             while(resultSet.next()) {
                 Person person = new Person();
-                int id = resultSet.getInt("id");
-                person.setId(id);
 
                 Type[] types = Type.values();
-                int typeOrdinal = resultSet.getInt("type");
 
-                person.setType(types[typeOrdinal]);
+                person.setId(resultSet.getInt("id"));
+                person.setType(types[resultSet.getInt("type")]);
                 person.setFirstName(resultSet.getString("first_name"));
                 person.setLastName(resultSet.getString("last_name"));
                 person.setEmail(resultSet.getString("email"));
@@ -63,37 +58,31 @@ public class PersonDaoImplementation implements PersonDao {
             e.printStackTrace();
         }
 
-        return  people;
+        return people;
     }
 
     @Override
-    public Person getByID(int id) {
+    public Person readByID(Person person) {
         String sql = "select * from person where id = ?";
 
-        try (Connection connection = ConnectionUtility.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
+        try (Connection connection = ConnectionUtility.getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-            if(resultSet.next()) {
-                Person person = new Person();
-                person.setId(id);
+            Type[] types = Type.values();
 
-                Type[] types = Type.values();
-                int typeOrdinal = resultSet.getInt("type");
-                person.setType(types[typeOrdinal]);
+            person.setId(resultSet.getInt("id"));
+            person.setType(types[resultSet.getInt("type")]);
+            person.setFirstName(resultSet.getString("first_name"));
+            person.setLastName(resultSet.getString("last_name"));
+            person.setEmail(resultSet.getString("email"));
+            person.setPassword(resultSet.getString("password"));
 
-                person.setFirstName(resultSet.getString("first_name"));
-                person.setLastName(resultSet.getString("last_name"));
-                person.setEmail(resultSet.getString("email"));
-                person.setPassword(resultSet.getString("password"));
-
-                return person;
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return person;
     }
 
     @Override
@@ -109,11 +98,8 @@ public class PersonDaoImplementation implements PersonDao {
             preparedStatement.setString(5, Encryption.hashString(person.getPassword()));
             preparedStatement.setInt(6, person.getId());
 
-            int affectedRows = preparedStatement.executeUpdate();
+            if(preparedStatement.executeUpdate() == 1) { return true; }
 
-            if(affectedRows == 1) {
-                return true;
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -122,33 +108,18 @@ public class PersonDaoImplementation implements PersonDao {
     }
 
     @Override
-    public Person getByEmailAndPassword(String email, String password) {
-        String sql = "select * from person where email = ? and password = ?";
+    public boolean delete(Person person) {
+        String sql = "delete from person where id = ?";
 
         try(Connection connection = ConnectionUtility.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, "email");
-            preparedStatement.setString(2, "password");
+            preparedStatement.setString(1, "id");
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+            if(preparedStatement.executeUpdate() == 1) { return true; }
 
-            if(resultSet.next()) {
-                Person person = new Person();
-                Type[] types = Type.values();
-                person.setId(resultSet.getInt("id"));
-                int typeOrdinal = resultSet.getInt("type");
-                person.setType(types[typeOrdinal]);
-
-                person.setFirstName(resultSet.getString("first_name"));
-                person.setLastName(resultSet.getString("last_name"));
-                person.setEmail(resultSet.getString("email"));
-                person.setPassword(resultSet.getString("password"));
-
-                return person;
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return false;
     }
 }
